@@ -1,28 +1,13 @@
 version: '2'
 
 services:
-  squid:
-    image: sameersbn/squid
-
   backend:
     image: nginx
 
   nginx:
+    ports:
+      - "8081:80"
     build:
       context: nginx
     depends_on:
       - backend
-      - squid
-
-  shell:
-    build:
-      context: shell
-    depends_on:
-      - squid
-      - nginx
-#    environment:
-#      - http_proxy=http://squid:3128
-
-# docker-compose build && docker-compose run shell
-# http_proxy=http://squid:3128 curl -v backend
-# curl -v nginx

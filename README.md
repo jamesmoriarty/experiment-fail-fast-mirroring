@@ -62,3 +62,34 @@ Running 30s test @ http://localhost:8081/
 Requests/sec:   1676.95
 Transfer/sec:      1.36MB
 ```
+
+### Backend NO CONNECTION
+
+```
+Running 30s test @ http://localhost:8081/
+  2 threads and 10 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     6.07ms  410.52us   6.66ms   60.00%
+    Req/Sec    12.00      0.00    12.00    100.00%
+  10 requests in 30.10s, 8.30KB read
+  Socket errors: connect 0, read 10, write 0, timeout 0
+Requests/sec:      0.33
+Transfer/sec:     282.35B
+```
+
+```
+proxy_buffering off;	
+proxy_connect_timeout 1s;
+```
+
+```
+Running 30s test @ http://localhost:8081/
+  2 threads and 10 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    69.82ms  200.23ms   1.02s    90.11%
+    Req/Sec     1.91k   748.68     4.03k    72.23%
+  98882 requests in 30.06s, 80.15MB read
+  Socket errors: connect 0, read 25, write 0, timeout 4
+Requests/sec:   3290.02
+Transfer/sec:      2.67MB
+```

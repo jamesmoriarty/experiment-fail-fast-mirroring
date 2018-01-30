@@ -13,3 +13,5 @@ done
 
 wrk -d 30 http://localhost:8081/ > results/$(date +"%Y%m%d-%H%M%S.txt")
 
+
+docker-compose down
